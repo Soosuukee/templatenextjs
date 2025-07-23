@@ -7,6 +7,7 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/service": true,
 };
 
 // Enable password protection on selected routes
@@ -47,7 +48,7 @@ const style = {
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
-  scaling: "100" // 90 | 95 | 100 | 105 | 110
+  scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 
 const effects = {
@@ -94,7 +95,7 @@ const effects = {
 const display = {
   location: true,
   time: true,
-  themeSwitcher: true
+  themeSwitcher: true,
 };
 
 const mailchimp = {
@@ -141,4 +142,13 @@ const mailchimp = {
   },
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, font };
+export {
+  routes,
+  protectedRoutes,
+  effects,
+  style,
+  display,
+  mailchimp,
+  baseURL,
+  font,
+};

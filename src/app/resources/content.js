@@ -1,16 +1,18 @@
 import { Logo } from "@/once-ui/components";
+import path from "path";
+import { title } from "process";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Jensen",
+  lastName: "Huang",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Architecte de Solution IA",
   avatar: "/images/avatar.jpg",
   email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asia/Taipei", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Taiwainese Hokkien", "Mandarin Chinese"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +20,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about design, technology, and share thoughts on the
+      intersection of creativity and engineering.
     </>
   ),
 };
@@ -40,12 +42,7 @@ const social = [
   {
     name: "X",
     icon: "x",
-    link: "",
-  },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
+    link: "https://x.com/nvidia",
   },
 ];
 
@@ -53,20 +50,19 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `Bienvenue sur le Portfolio de ${person.name}`,
+  description: `Ce portfolio presente mon travail en tant que ${person.role}`,
+  headline: <>Powering Advanced AI</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: (
+      <>
+        Recent project: <strong className="ml-4">Once UI</strong>
+      </>
+    ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
-  subline: (
-    <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
-    </>
-  ),
+  subline: <>Je suis {person.firstName}</>,
 };
 
 const about = {
@@ -90,89 +86,126 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Jensen Huang est un entrepreneur taïwano‑américain basé dans la
+        Silicon Valley, cofondateur et PDG de NVIDIA. Visionnaire des
+        processeurs graphiques et de l’IA, il transforme des défis
+        technologiques complexes en innovations qui font avancer l’informatique,
+        la recherche et la création numérique.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Mon experience professionel",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Nvidia",
+        timeframe: "1993 - Aujourd'hui",
+        role: "Fondateur et President Directeur Generale",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            A lancé la plateforme CUDA en 2006, ouvrant le GPU au calcul
+            général ; certaines charges HPC ont été accélérées jusqu’à 1 000 ×,
+            faisant chuter le coût du calcul d’un facteur 1 000.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            A transformé Nvidia en leader de l’IA : le chiffre d’affaires est
+            passé d’environ 3 G$ en 2010 à plus de 130 G$ en 2025 (+3 600 %),
+            hissant l’entreprise parmi les toutes premières capitalisations
+            mondiales.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            src: "/images/projects/project-01/NVIDIA.jpg",
+            alt: "Nvidia",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Denny's",
+        timeframe: "1978 - 1983",
+        role: "Plongeur, Commis debarrasseur et Serveur",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Optimisé le circuit de plonge en instaurant un tri préalable et un
+            remplissage méthodique des machines, réduisant le temps de rotation
+            de la vaisselle de 25 %.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Mis en place un protocole de débarrassage et de remise en place des
+            tables en équipe, accélérant la préparation des couverts de 30 % et
+            augmentant le chiffre d’affaires du service du soir de 12 %.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/project-01/Dennys.png",
+            alt: "Nvidia",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Etude et Formation",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        degreeTitle: "Bachelor en Genie Electrique",
+        institutionName: "Université de l'état d'Oregon",
+        yearsAttended: "1980 - 1984",
+        programDescription: (
+          <>
+            Parcours accrédité ABET couvrant les fondements du génie
+            électrique : circuits analogiques et numériques, électronique de
+            puissance, électromagnétisme, traitement du signal et
+            microprocesseurs. Le cursus inclut des laboratoires pratiques chaque
+            trimestre et un projet
+            <em>capstone</em> en équipe consacré à la conception d’un système
+            embarqué complet.
+          </>
+        ),
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        degreeTitle: "Master en Genie Electrique",
+        institutionName: "Universite de Stanford",
+        yearsAttended: "1990 - 1992",
+        programDescription: (
+          <>
+            Cycle de recherche axé sur les architectures matérielles avancées et
+            le calcul parallèle : VLSI, conception de processeurs graphiques et
+            algorithmes accélérés. Mémoire de fin d’études réalisé au Stanford
+            Graphics Lab sur l’usage des GPU pour le rendu 3D en temps réel,
+            aboutissant à une publication scientifique et à un prototype
+            fonctionnel.
+          </>
+        ),
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Mes Technologies",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Cuda",
+        description: (
+          <>
+            Plateforme de calcul parallèle lancée en 2006 : elle expose la
+            puissance des GPU via C/C++ et Python, devenant le standard de facto
+            pour l’IA, la HPC et le rendu scientifique.
+          </>
+        ),
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/tech/cuda.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -180,13 +213,57 @@ const about = {
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Architectures GPU (Tesla → Blackwell)",
+        description: (
+          <>
+            {" "}
+            Direction technique de générations phares&nbsp;: Tesla, Fermi,
+            Pascal, Volta, Turing, Ampere, Hopper puis Blackwell
+            (208 milliards&nbsp;de transistors, annoncé en&nbsp;2024). Chaque
+            itération double (ou plus) les performances et introduit des blocs
+            dédiés : Tensor Cores, RT Cores, Transformer Engines…
+          </>
+        ),
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/tech/blackwell-die.png",
             alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Systèmes DGX & Superchips",
+        description: (
+          <>
+            Conception des stations DGX (AI supercomputer « clé en main ») et
+            des superchips&nbsp;Grace Hopper / Grace Blackwell, capables de
+            délivrer jusqu’à plusieurs dizaines de PFLOPS IA par nœud.
+          </>
+        ),
+        images: [
+          {
+            src: "/images/tech/dgx-station.jpg",
+            alt: "NVIDIA DGX Station",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Omniverse & Génération 3D",
+        description: (
+          <>
+            Plateforme de simulation collaborative temps‑réel basée sur
+            l’USD&nbsp;: jumeaux numériques, rendu photoréaliste et pipelines
+            d’IA générative pour l’industrie, la robotique et le divertissement.
+          </>
+        ),
+        images: [
+          {
+            src: "/images/tech/omniverse.jpg",
+            alt: "Capture d'écran Omniverse",
             width: 16,
             height: 9,
           },
@@ -194,6 +271,12 @@ const about = {
       },
     ],
   },
+};
+const service = {
+  path: "/service",
+  label: "Service",
+  title: "Mes Services",
+  description: `Nous aidons les entreprises à passer de l’idée au produit`,
 };
 
 const blog = {
@@ -265,4 +348,14 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  service,
+  blog,
+  work,
+  gallery,
+};
