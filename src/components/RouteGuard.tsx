@@ -3,11 +3,18 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/app/resources";
-import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@/once-ui/components";
+import {
+  Flex,
+  Spinner,
+  Button,
+  Heading,
+  Column,
+  PasswordInput,
+} from "@/once-ui/components";
 import NotFound from "@/app/not-found";
 
 interface RouteGuardProps {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
@@ -33,7 +40,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
           return routes[pathname as keyof typeof routes];
         }
 
-        const dynamicRoutes = ["/blog", "/work"] as const;
+        const dynamicRoutes = ["/blog", "/work", "/service"] as const;
         for (const route of dynamicRoutes) {
           if (pathname?.startsWith(route) && routes[route]) {
             return true;
@@ -85,8 +92,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   }
 
   if (!isRouteEnabled) {
-		return <NotFound />;
-	}
+    return <NotFound />;
+  }
 
   if (isPasswordRequired && !isAuthenticated) {
     return (

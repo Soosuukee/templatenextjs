@@ -18,6 +18,10 @@ import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "service", "items"]);
+  console.log(
+    "Service slugs:",
+    posts.map((p) => p.slug)
+  ); // debug: list all slugs
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -34,7 +38,9 @@ export async function generateMetadata({
     : routeParams.slug || "";
 
   const posts = getPosts(["src", "app", "service", "items"]);
-  const post = posts.find((p) => p.slug === slugPath);
+  const post = posts.find(
+    (p) => p.slug.toLowerCase() === slugPath.toLowerCase()
+  );
   if (!post) return {};
 
   return Meta.generate({
@@ -57,10 +63,12 @@ export default async function Service({
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
+  console.log("Requested service slug:", slugPath); // debug: requested slug
 
   const post = getPosts(["src", "app", "service", "items"]).find(
     (p) => p.slug === slugPath
   );
+  console.log("Found service post:", Boolean(post)); // debug: post existence
   if (!post) notFound();
 
   return (

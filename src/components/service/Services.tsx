@@ -2,6 +2,7 @@ import { getPosts } from "@/app/utils/utils";
 import { Column } from "@/once-ui/components";
 import { service } from "@/app/resources/content";
 import { ProjectCard } from "@/components";
+import styles from "./Services.module.scss";
 
 interface ServicesProps {
   range?: [number, number?];
@@ -27,19 +28,21 @@ export function Services({ range }: ServicesProps) {
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
       {displayedServices.map((post, index) => (
-        <ProjectCard
-          priority={index < 2}
-          key={post.slug}
-          href={`${service.path}/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          avatars={
-            post.metadata.team?.map((member) => ({ src: member.avatar })) || []
-          }
-          link={post.metadata.link || ""}
-        />
+        <div key={post.slug} className={styles.hover}>
+          <ProjectCard
+            priority={index < 2}
+            href={`${service.path}/${post.slug}`}
+            images={post.metadata.images}
+            title={post.metadata.title}
+            description={post.metadata.summary}
+            content={post.content}
+            avatars={
+              post.metadata.team?.map((member) => ({ src: member.avatar })) ||
+              []
+            }
+            link={post.metadata.link || ""}
+          />
+        </div>
       ))}
     </Column>
   );
