@@ -1,6 +1,8 @@
 // src/app/service/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx";
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import { mdxComponents } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import {
   AvatarGroup,
@@ -71,6 +73,16 @@ export default async function Service({
   console.log("Found service post:", Boolean(post)); // debug: post existence
   if (!post) notFound();
 
+  // Compile MDX content avec tables GFM
+  const { content } = await compileMDX({
+    source: post.content,
+    components: mdxComponents,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: { remarkPlugins: [remarkGfm] },
+    },
+  });
+
   return (
     <Column as="section" maxWidth="m" horizontal="center" gap="l">
       <Schema
@@ -130,7 +142,7 @@ export default async function Service({
             </Text>
           )}
         </Flex>
-        <CustomMDX source={post.content} />
+        {content}
       </Column>
     </Column>
   );

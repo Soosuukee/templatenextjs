@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx";
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import { mdxComponents } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
 import {
   AvatarGroup,
@@ -70,6 +72,16 @@ export default async function Project({
     notFound();
   }
 
+  // Compile MDX content avec tables GFM
+  const { content } = await compileMDX({
+    source: post.content,
+    components: mdxComponents,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: { remarkPlugins: [remarkGfm] },
+    },
+  });
+
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
@@ -123,7 +135,7 @@ export default async function Project({
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={post.content} />
+        {content}
       </Column>
       <ScrollToHash />
     </Column>
