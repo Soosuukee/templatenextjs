@@ -9,10 +9,10 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Architecte de Solution IA",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/avatar-jh.jpg",
   email: "example@gmail.com",
-  location: "Asia/Taipei", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Taiwainese Hokkien", "Mandarin Chinese"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asie/Taipei", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Anglais", "Hokkien taïwanais", " Chinois Mandarin"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -67,9 +67,9 @@ const home = {
 
 const about = {
   path: "/about",
-  label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "A propos",
+  title: `A propos de ${person.name}`,
+  description: `Rencontrez ${person.name}, ${person.role} de ${person.location}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -274,7 +274,7 @@ const about = {
 };
 const service = {
   path: "/service",
-  label: "Service",
+  label: "Services",
   title: "Mes Services",
   description: `Nous aidons les entreprises à passer de l’idée au produit`,
 };

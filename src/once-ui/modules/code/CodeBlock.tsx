@@ -6,15 +6,37 @@ import "./CodeHighlight.css";
 import "./LineNumber.css";
 import styles from "./CodeBlock.module.scss";
 
-import { Flex, Button, IconButton, Scroller, Row, StyleOverlay } from "../../components";
+import {
+  Flex,
+  Button,
+  IconButton,
+  Scroller,
+  Row,
+  StyleOverlay,
+} from "../../components";
 
 import Prism from "prismjs";
+// Ensure whitespace normalization for line-highlight plugin
+import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace";
 import "prismjs/plugins/line-highlight/prism-line-highlight";
 import "prismjs/plugins/line-numbers/prism-line-numbers";
+// Load core language dependency
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-markup-templating";
+// Load essential language syntaxes
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-css";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-tsx";
+// Add support for bash and python highlighting
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp";
+import "prismjs/components/prism-csharp";
+import "prismjs/components/prism-php";
+
 import classNames from "classnames";
 import { SpacingToken } from "../../types";
 
@@ -112,7 +134,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
   };
 
   const handleContent = (selectedLabel: string) => {
-    const index = codeInstances.findIndex((instance) => instance.label === selectedLabel);
+    const index = codeInstances.findIndex(
+      (instance) => instance.label === selectedLabel
+    );
     if (index !== -1) {
       setSelectedInstance(index);
     }
@@ -157,7 +181,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                     className="mr-2"
                     weight="default"
                     size="s"
-                    variant={selectedInstance === index ? "secondary" : "tertiary"}
+                    variant={
+                      selectedInstance === index ? "secondary" : "tertiary"
+                    }
                     label={instance.label}
                     onClick={() => {
                       setSelectedInstance(index);
@@ -231,7 +257,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
           overflowY="auto"
         >
           {Array.isArray(codePreview)
-            ? codePreview.map((item, index) => <React.Fragment key={index}>{item}</React.Fragment>)
+            ? codePreview.map((item, index) => (
+                <React.Fragment key={index}>{item}</React.Fragment>
+              ))
             : codePreview}
         </Flex>
       )}
@@ -252,17 +280,25 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                 `language-${language}`,
                 {
                   "line-numbers": lineNumbers,
-                },
+                }
               )}
               tabIndex={-1}
             >
-              <code ref={codeRef} className={classNames(styles.code, `language-${language}`)}>
+              <code
+                ref={codeRef}
+                className={classNames(styles.code, `language-${language}`)}
+              >
                 {typeof code === "string" ? code : code.content}
               </code>
             </pre>
           </Flex>
           {compact && copyButton && (
-            <Flex paddingX="8" paddingY="4" className={styles.compactCopy} zIndex={1}>
+            <Flex
+              paddingX="8"
+              paddingY="4"
+              className={styles.compactCopy}
+              zIndex={1}
+            >
               <IconButton
                 tooltip="Copy"
                 tooltipPosition="left"

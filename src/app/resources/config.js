@@ -6,9 +6,7 @@ const routes = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
   "/service": true,
-  "/posts": true,
 };
 
 // Enable password protection on selected routes
@@ -94,8 +92,8 @@ const effects = {
 };
 
 const display = {
-  location: true,
-  time: true,
+  location: false,
+  time: false,
   themeSwitcher: true,
 };
 

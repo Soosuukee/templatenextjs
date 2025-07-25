@@ -15,7 +15,10 @@ import {
   SmartLink,
   Text,
   InlineCode,
+  Flex,
+  RevealFx,
 } from "@/once-ui/components";
+import CustomLetterFx from "./CustomLetterFx";
 import { CodeBlock } from "@/once-ui/modules/code/CodeBlock";
 import { TextProps } from "@/once-ui/interfaces";
 import { SmartImageProps } from "@/once-ui/components/SmartImage";
@@ -174,6 +177,11 @@ const components = {
   Text,
   CodeBlock,
   InlineCode,
+  Flex,
+  RevealFx,
+  LetterFx: CustomLetterFx,
+  CustomLetterFx: CustomLetterFx,
+  Media: SmartImage,
   Accordion: dynamic(() =>
     import("@/once-ui/components").then((mod) => mod.Accordion)
   ),

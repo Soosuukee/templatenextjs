@@ -3,6 +3,7 @@ import { baseURL } from "@/app/resources";
 import { about, person, service } from "@/app/resources/content";
 import { Meta, Schema } from "@/once-ui/modules";
 import { Services } from "@/components/service/Services";
+import { RevealFx } from "@/once-ui/components";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -30,7 +31,15 @@ export default function Service() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Services />
+      <RevealFx
+        fillWidth
+        horizontal="start"
+        paddingTop="16"
+        paddingBottom="32"
+        paddingLeft="12"
+      >
+        <Services />
+      </RevealFx>
     </Column>
   );
 }
