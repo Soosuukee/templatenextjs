@@ -15,12 +15,12 @@ const protectedRoutes = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import { Geist_Mono } from "next/font/google";
 
-const primaryFont = Geist({
+const primaryFont = localFont({
   variable: "--font-primary",
-  subsets: ["latin"],
+  src: "../../../public/fonts/Chillax-Variable.ttf",
   display: "swap",
 });
 

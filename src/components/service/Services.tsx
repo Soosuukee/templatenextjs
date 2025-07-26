@@ -28,7 +28,7 @@ export function Services({ range }: ServicesProps) {
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
       {displayedServices.map((post, index) => (
-        <div key={post.slug} className={styles.hover}>
+        <div key={post.slug} className={styles.service}>
           <ProjectCard
             priority={index < 2}
             href={`${service.path}/${post.slug}`}

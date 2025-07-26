@@ -26,7 +26,7 @@ export const Footer = () => {
           <Text paddingX="4">{person.name}</Text>
           <Text onBackground="neutral-weak">
             {/* Usage of this template requires attribution. Please don't remove the link to Once UI. */}
-            / Powered by{" "}
+            / skAi Powered by{" "}
             <SmartLink href="https://services.ceo/">Services CEO</SmartLink>
           </Text>
         </Text>

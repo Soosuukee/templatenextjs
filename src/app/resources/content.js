@@ -15,17 +15,6 @@ const person = {
   languages: ["Anglais", "Hokkien taïwanais", " Chinois Mandarin"], // optional: Leave the array empty if you don't want to display languages
 };
 
-const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the
-      intersection of creativity and engineering.
-    </>
-  ),
-};
-
 const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
@@ -52,17 +41,7 @@ const home = {
   label: "Home",
   title: `Bienvenue sur le Portfolio de ${person.name}`,
   description: `Ce portfolio presente mon travail en tant que ${person.role}`,
-  headline: <>Powering Advanced AI</>,
-  featured: {
-    display: true,
-    title: (
-      <>
-        Recent project: <strong className="ml-4">Once UI</strong>
-      </>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
-  },
-  subline: <>Je suis {person.firstName}</>,
+  headline: <>Le moteur de l’IA nouvelle génération</>,
 };
 
 const about = {
@@ -78,7 +57,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -282,7 +261,7 @@ const service = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: `Les articles écrits par Jensen`,
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -348,14 +327,4 @@ const gallery = {
   ],
 };
 
-export {
-  person,
-  social,
-  newsletter,
-  home,
-  about,
-  service,
-  blog,
-  work,
-  gallery,
-};
+export { person, social, home, about, service, blog, work, gallery };

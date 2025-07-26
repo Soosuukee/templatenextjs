@@ -3,7 +3,13 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
+import {
+  Fade,
+  Flex,
+  Line,
+  ToggleButton,
+  SmartLink,
+} from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
@@ -77,7 +83,15 @@ export const Header = () => {
           fillWidth
           vertical="center"
           textVariant="body-default-s"
+          gap="8"
         >
+          <SmartLink href="/" unstyled>
+            <img
+              src="/trademark/Modern-_skAi_-Typography-Design.svg"
+              alt="Logo"
+              style={{ height: "4rem", width: "auto", filter: "invert(1)" }}
+            />
+          </SmartLink>
           {display.location && <Flex hide="s">{person.location}</Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">

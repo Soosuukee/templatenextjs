@@ -198,6 +198,9 @@ const components = {
   Card: dynamic(() => import("@/once-ui/components").then((mod) => mod.Card)),
   Grid: dynamic(() => import("@/once-ui/components").then((mod) => mod.Grid)),
   Row: dynamic(() => import("@/once-ui/components").then((mod) => mod.Row)),
+  FlipFx: dynamic(() =>
+    import("@/once-ui/components").then((mod) => mod.FlipFx)
+  ),
   Column: dynamic(() =>
     import("@/once-ui/components").then((mod) => mod.Column)
   ),

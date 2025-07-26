@@ -11,6 +11,7 @@ import {
   Text,
   RevealFx,
 } from "@/once-ui/components";
+import BrandSetter from "@/components/BrandSetter";
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
@@ -28,7 +29,16 @@ export async function generateMetadata() {
   });
 }
 
-export default function About() {
+export default function AboutPage() {
+  return (
+    <>
+      <BrandSetter brand="yellow" />
+      <About />
+    </>
+  );
+}
+
+function About() {
   const structure = [
     {
       title: about.intro.title,
@@ -107,7 +117,9 @@ export default function About() {
                   ))}
                 </Flex>
               )}
-              <Button variant="primary">Mes Services</Button>
+              <Button href="/service" variant="primary">
+                Mes Services
+              </Button>
             </Column>
           )}
           <Column className={styles.blockAlign} flex={9} maxWidth={40}>

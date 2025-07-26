@@ -7,8 +7,10 @@ import {
   RevealFx,
   Column,
   SmartLink,
+  Grid,
 } from "@/once-ui/components";
-import { Posts } from "@/components/blog/Posts";
+import { CustomRevealFx } from "@/components/CustomRevealFx";
+import Post from "@/components/blog/Post";
 import { getPosts } from "@/app/utils/utils";
 import { ServiceCard } from "@/components/ServiceCard";
 import { service } from "@/app/resources/content";
@@ -71,24 +73,6 @@ export default function Home() {
             </Heading>
           </RevealFx>
           <RevealFx
-            translateY="8"
-            delay={0.2}
-            fillWidth
-            horizontal="start"
-            paddingBottom="32"
-          >
-            <p
-              style={{
-                margin: 0,
-                color: "var(--neutral-weak)",
-                fontSize: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              {home.subline}
-            </p>
-          </RevealFx>
-          <RevealFx
             paddingTop="12"
             delay={0.4}
             horizontal="start"
@@ -124,22 +108,30 @@ export default function Home() {
       </Column>
       {/* Section services */}
       <Column fillWidth gap="l">
-        <Heading
-          as="h2"
-          marginTop="32"
-          marginBottom="16"
-          variant="display-strong-s"
-        >
-          Les services proposée par Jensen
-        </Heading>
-        {servicesList.map((svc) => (
-          <ServiceCard
+        <CustomRevealFx translateY={4} delay={0.1} fillWidth>
+          <Heading
+            as="h2"
+            marginTop="32"
+            marginBottom="16"
+            variant="display-strong-s"
+          >
+            Les services proposée par Jensen
+          </Heading>
+        </CustomRevealFx>
+        {servicesList.map((svc, idx) => (
+          <CustomRevealFx
             key={svc.slug}
-            slug={svc.slug}
-            title={svc.metadata.title}
-            summary={svc.metadata.summary}
-            image={svc.metadata.image}
-          />
+            translateY={4}
+            delay={0.1 * (idx + 1)}
+            fillWidth
+          >
+            <ServiceCard
+              slug={svc.slug}
+              title={svc.metadata.title}
+              summary={svc.metadata.summary}
+              image={svc.metadata.image || svc.metadata.images?.[0]}
+            />
+          </CustomRevealFx>
         ))}
         <SmartLink
           href={service.path}
@@ -159,7 +151,25 @@ export default function Home() {
           Derniers articles
         </Heading>
       </RevealFx>
-      <Posts range={[1, 2]} columns="2" thumbnail />
+      {/* Articles récents */}
+      <Grid columns="2" mobileColumns="1" fillWidth marginBottom="12" gap="12">
+        {blogList.map((post, idx) => (
+          <CustomRevealFx
+            key={post.slug}
+            translateY={4}
+            delay={0.1 * (idx + 1)}
+            fillWidth
+          >
+            <Post post={post} thumbnail={true} direction="column" />
+          </CustomRevealFx>
+        ))}
+      </Grid>
+      <SmartLink
+        href="/blog"
+        style={{ display: "block", marginTop: "1rem", color: "var(--brand)" }}
+      >
+        Voir plus d'article de Jensen
+      </SmartLink>
     </Column>
   );
 }

@@ -9,13 +9,4 @@ export {
   baseURL,
   font,
 } from "@/app/resources/config";
-export {
-  person,
-  social,
-  newsletter,
-  home,
-  about,
-  blog,
-  work,
-  gallery,
-} from "@/app/resources/content";
+export { person, social, home, about, blog } from "@/app/resources/content";
